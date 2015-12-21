@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Debug\
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\
 ColorSnail
 none
 false
-DEBUG;TRACE
+TRACE
 D:\Programs\ColorSnail\ColorSnail\ColorSnail\App.xaml
 2540622995
 
-11-1663013279
+7745126309
 14-1001767708
 MainWindow.xaml;About.xaml;
 

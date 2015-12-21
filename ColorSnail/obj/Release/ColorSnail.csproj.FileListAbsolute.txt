@@ -1,0 +1,15 @@
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\bin\Release\ColorSnail.exe.config
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\bin\Release\ColorSnail.exe
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\bin\Release\ColorSnail.pdb
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\MainWindow.g.cs
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\About.g.cs
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\App.g.cs
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\ColorSnail_MarkupCompile.cache
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\ColorSnail_MarkupCompile.lref
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\MainWindow.baml
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\About.baml
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\ColorSnail.g.resources
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\ColorSnail.Properties.Resources.resources
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\ColorSnail.csproj.GenerateResource.Cache
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\ColorSnail.exe
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Release\ColorSnail.pdb
