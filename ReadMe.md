@@ -3,7 +3,9 @@ ReadMe alpha v0.1
 
 ## Instructions
 
-Color Snail applies user-friendly UI/UX. The tool is intuitively easy to utilize.
+Color Snail applies user-friendly UI/UX. The tool is intuitively easy to utilize. 
+To download the source code, please fork or clone the repository. I am more than willing to hear from users. Please open an issue or email me directly at hj5fb@virginia.edu if you prefer it. 
+To download the executable only (the .exe you run), open the folder "Release [version number]" and download "ColorSnail.exe". This standalone executable should be able to run if .Net framework is installed properly on your machine.
 
 ### 1. Grab Color
 
