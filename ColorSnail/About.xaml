@@ -1,0 +1,28 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ColorSnail"
+        xmlns:Properties="clr-namespace:ColorSnail.Properties" x:Class="ColorSnail.AboutWindow"
+        mc:Ignorable="d"
+        Deactivated="Window_Deactivated"
+        Foreground="White"
+        Title="Window1" Height="300" Width="300" WindowStyle="None">
+    <Grid>
+        <StackPanel Background="#FF252526">
+            <TextBlock Margin="20, 10, 10, 10" FontSize="18"><Run Text="Color Snail alpha v0.1"/></TextBlock>
+            <TextBlock Margin="20, 5, 10, 10"><Run Text="Created by PowerSnail Technology"/></TextBlock>
+            <TextBlock Margin="20, 0, 10, 10">For help information, please visit</TextBlock>
+            <TextBlock Margin="20, 0, 10, 10">
+                <Hyperlink NavigateUri="http://powersnail.github.io/" RequestNavigate="Hyperlink_RequestNavigate" >
+                    http://powersnail.github.io/
+                </Hyperlink>
+            </TextBlock>
+            <Separator Background="#35FFFFFF" Foreground="#FF959595"  />
+            <TextBlock Margin="10, 5, 5, 10" FontSize="15"><Run Text="Credits:"/></TextBlock>
+            <TextBlock Margin="20, 0, 10, 10" TextWrapping="Wrap"><Run Text="The Icon of Color Straw is created by Freepik from www.flaticon.com licensed under Creative Commons BY 3.0."/></TextBlock>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,31 @@
+﻿<Window x:Class="ColorSnail.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ColorSnail"
+        mc:Ignorable="d"
+        Deactivated="Window_Deactivated"
+        ResizeMode="NoResize"
+        Background="#FF3F3F46"
+        Title="Color Snail alpha v0.1" Height="500" Width="300" WindowStyle="None">
+    <Grid>
+        <DockPanel LastChildFill="True" Background="#FF252526">
+            <DockPanel Background="#FF3F3F46" Height="25" DockPanel.Dock="Top" HorizontalAlignment="Stretch" LastChildFill="True">
+                <WrapPanel DockPanel.Dock="Right" Margin="2" Background="#FF333337">
+                    <Image Name="CloseButton" Width="12" Height="12" Source="/Resources/close47.png" Margin="4" MouseUp="Close_Button_Mouse_up"></Image>
+                </WrapPanel>
+                <DockPanel  MouseLeftButtonDown="Window_MouseDown">
+                    <TextBlock Text="Color Snail alpha v0.1" Foreground="LightGray" FontSize="12" Margin="10 3 3 4" MouseLeftButtonDown="Window_MouseDown" ></TextBlock>
+                </DockPanel>
+            </DockPanel>
+            <WrapPanel DockPanel.Dock="Top" Background="#FF1C1C1C">
+                <Image Width="32" Margin="5" MouseUp="Image_MouseUp" Source="/Resources/colorstraw.png"/>
+                <TextBlock Name="tbStatus" Margin="5" VerticalAlignment="Center" Foreground="White"></TextBlock>
+            </WrapPanel>
+            <Image DockPanel.Dock="Top" Source="/Resources/Shadow.png" Stretch="Fill" Height="7" Opacity="44"></Image>
+            <StackPanel Name="spColor" Background="#FF252526">
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
