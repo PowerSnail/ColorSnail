@@ -39,7 +39,6 @@ alpha v0.1 [goto Release Notes](#alpha0.1)
 ### 2015 Dec. 12: alpha v0.1 
 <a name="alpha0.1"></a>
 ---
-
 1. Get Color from any pixel on the screen
 2. Keep main window active while getting the color
 3. List colors, with a square demonstrating its color, a textBlock writing its color code and a 'x' button to close the color item
