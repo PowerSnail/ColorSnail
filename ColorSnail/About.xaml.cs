@@ -35,5 +35,10 @@ namespace ColorSnail
         {
             System.Diagnostics.Process.Start(e.Uri.ToString());
         }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            Topmost = true;
+        }
     }
 }

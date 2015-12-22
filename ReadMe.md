@@ -1,4 +1,4 @@
-ReadMe alpha v0.1
+ReadMe alpha v0.2
 ===
 
 ## Instructions
@@ -23,22 +23,34 @@ Double click on the top bar, and you will be able to see the About and Credit in
 
 ## Latest Version
 
-alpha v0.1 [goto Release Notes](#alpha0.1)
+alpha v0.2 [goto Release Notes](#Release Notes)
 
 ## TODOs
 
-1. Add animations when mouse move over clickable items to provide better interactive responses
-2. Add animations to deleting and adding color item
-3. Enable saving the list of color to a local file (xml)
-4. Enable loading the list of color from a local file (xml)
-5. Add tutorial animation
-6. Perfecting the ReadMe.md file: a). add icons to places needed; b). add screenshots of the program
+- Add animations when mouse move over clickable items to provide better interactive responses
+- Enable saving the list of color to a local file 
+- Enable loading the list of color from a local file 
+- Add tutorial animation
+- Perfecting the ReadMe.md file: a). add icons to places needed; b). add screenshots of the program
 
 ## Release Notes
 
+### 2015 Dec. 21: alpha v0.2
+New Features:
+
+1. When selecting pixel, you can click right button to exit the selecting mode.
+2. A border that indicates the mode of the program: blue for normal and red for selecting mode.
+3. Animation added for adding and removing color items.
+4. Refactored some confusing method names.
+5. Effect for mouse moving over close button.
+6. Save colors to file.
+7. Load colors from file.
+
+bug fixed:
+
+1. window no longer acquire focus every time its deactivated. Main window and About window both apply topmost property; Main window will acquire focus when user is selecting pixel from the screen.
+
 ### 2015 Dec. 12: alpha v0.1 
-<a name="alpha0.1"></a>
----
 1. Get Color from any pixel on the screen
 2. Keep main window active while getting the color
 3. List colors, with a square demonstrating its color, a textBlock writing its color code and a 'x' button to close the color item

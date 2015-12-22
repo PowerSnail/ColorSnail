@@ -13,3 +13,4 @@ D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Debug\ColorSnail.Properties.Res
 D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Debug\ColorSnail.csproj.GenerateResource.Cache
 D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Debug\ColorSnail.exe
 D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Debug\ColorSnail.pdb
+D:\Programs\ColorSnail\ColorSnail\ColorSnail\obj\Debug\ColorSnail.csprojResolveAssemblyReference.cache

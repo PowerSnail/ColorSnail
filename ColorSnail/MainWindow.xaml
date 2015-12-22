@@ -5,27 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColorSnail"
         mc:Ignorable="d"
-        Deactivated="Window_Deactivated"
         ResizeMode="NoResize"
         Background="#FF3F3F46"
-        Title="Color Snail alpha v0.1" Height="500" Width="300" WindowStyle="None">
+        Topmost="True"
+        Title="Color Snail alpha v0.2" Height="500" Width="300" WindowStyle="None">
     <Grid>
-        <DockPanel LastChildFill="True" Background="#FF252526">
-            <DockPanel Background="#FF3F3F46" Height="25" DockPanel.Dock="Top" HorizontalAlignment="Stretch" LastChildFill="True">
-                <WrapPanel DockPanel.Dock="Right" Margin="2" Background="#FF333337">
-                    <Image Name="CloseButton" Width="12" Height="12" Source="/Resources/close47.png" Margin="4" MouseUp="Close_Button_Mouse_up"></Image>
-                </WrapPanel>
-                <DockPanel  MouseLeftButtonDown="Window_MouseDown">
-                    <TextBlock Text="Color Snail alpha v0.1" Foreground="LightGray" FontSize="12" Margin="10 3 3 4" MouseLeftButtonDown="Window_MouseDown" ></TextBlock>
+        <Border x:Name="OutBorder" Background="#FF2196F3" BorderThickness="1" BorderBrush="#FF2196F3">
+            <DockPanel LastChildFill="True" Background="#FF252526">
+                <DockPanel Background="#FF3F3F46" Height="25" DockPanel.Dock="Top" HorizontalAlignment="Stretch" LastChildFill="True">
+                    <WrapPanel Name="wrapPanelAroundCloseButton" DockPanel.Dock="Right" Margin="2" Background="#FF333337">
+                        <Image Name="CloseButton" Width="12" Height="12" Source="/Resources/close47.png" Margin="4" MouseUp="Close_Button_Mouse_up" MouseEnter="CloseButton_MouseEnter" MouseLeave="CloseButton_MouseLeave"></Image>
+                    </WrapPanel>
+                    <DockPanel  MouseLeftButtonDown="Window_MouseDown">
+                        <TextBlock Text="Color Snail alpha v0.1" Foreground="LightGray" FontSize="12" Margin="10 3 3 4" MouseLeftButtonDown="Window_MouseDown" ></TextBlock>
+                    </DockPanel>
                 </DockPanel>
+                <WrapPanel Name="wrapPanelTools" DockPanel.Dock="Top" Background="#FF1C1C1C">
+                    <Image Name="btnSelectPixel" Width="32" Margin="5" MouseUp="btnSelectColor_MouseUp" Source="/Resources/colorstraw.png"/>
+                    <TextBlock Name="tbStatus" Margin="5" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                </WrapPanel>
+                <Image DockPanel.Dock="Top" Source="/Resources/Shadow.png" Stretch="Fill" Height="7" Opacity="44"></Image>
+                <WrapPanel Name="wrapPanelToolsBottom" DockPanel.Dock="Bottom" Background="#FF1C1C1C">
+                    <Button Name="btnLoad" Content="Load" Click="btnLoad_Click" Height="20" Width="40" Margin="3"></Button>
+                    <Button Name="btnSave" Content="Save" Click="btnSave_Click" Height="20" Width="40" Margin="3"></Button>
+                </WrapPanel>
+                <Image DockPanel.Dock="Bottom" Source="/Resources/Shadow.png" Stretch="Fill" Height="7" Opacity="44" RenderTransformOrigin="0.5, 0.5">
+                    <Image.RenderTransform>
+                        <RotateTransform Angle="180"></RotateTransform>
+                    </Image.RenderTransform>
+                </Image>
+                <StackPanel Name="spColor" Background="#FF252526"></StackPanel>
             </DockPanel>
-            <WrapPanel DockPanel.Dock="Top" Background="#FF1C1C1C">
-                <Image Width="32" Margin="5" MouseUp="Image_MouseUp" Source="/Resources/colorstraw.png"/>
-                <TextBlock Name="tbStatus" Margin="5" VerticalAlignment="Center" Foreground="White"></TextBlock>
-            </WrapPanel>
-            <Image DockPanel.Dock="Top" Source="/Resources/Shadow.png" Stretch="Fill" Height="7" Opacity="44"></Image>
-            <StackPanel Name="spColor" Background="#FF252526">
-            </StackPanel>
-        </DockPanel>
+        </Border>
     </Grid>
 </Window>

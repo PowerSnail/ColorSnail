@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing.Imaging;
+using Microsoft.Win32;
 
 namespace ColorSnail
 {
@@ -21,11 +22,33 @@ namespace ColorSnail
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string GETCOLOR = "Please click to fetch color...";
-        private string WAITING = "Welcome to Color Snail alpha 0.1";
-        private string DONEGETTING = "Copy color code by clicking on the squares";
+        private static string GETCOLOR = "Please click to fetch color...";
+        private static string WAITING = "Welcome to Color Snail alpha 0.1";
+        private static string DONEGETTING = "Copy color code by clicking on the squares";
+
+        private static int MSECANIME = 200;
 
         AboutWindow about = new AboutWindow();
+
+        System.Windows.Media.Animation.DoubleAnimation enterAnimation = new System.Windows.Media.Animation.DoubleAnimation()
+        {
+            From = 0,
+            To = 30,
+            Duration = new System.Windows.Duration(TimeSpan.FromMilliseconds(MSECANIME)),
+            AutoReverse = false
+        };
+
+        System.Windows.Media.Animation.Storyboard enterSB = new System.Windows.Media.Animation.Storyboard();
+
+        System.Windows.Media.Animation.DoubleAnimation removeAnimation = new System.Windows.Media.Animation.DoubleAnimation()
+        {
+            From = 30,
+            To = 0,
+            Duration = new System.Windows.Duration(TimeSpan.FromMilliseconds(MSECANIME)),
+            AutoReverse = false
+        };
+
+        System.Windows.Media.Animation.Storyboard removeSB = new System.Windows.Media.Animation.Storyboard();
 
 
         public MainWindow()
@@ -34,6 +57,8 @@ namespace ColorSnail
             Mouse.AddMouseMoveHandler(this, mouse_move);
             print(WAITING);
             about.Visibility = Visibility.Hidden;
+
+            initAnimations();
         }
 
 
@@ -55,26 +80,42 @@ namespace ColorSnail
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Mouse.AddMouseDownHandler(this, mouseDown);
+            Mouse.AddMouseDownHandler(this, mouseDownWhenSelectingColor);
+            this.Deactivated += holdWindowFocus;
             this.CaptureMouse();
             print(GETCOLOR);
         }
 
-        private void mouseDown(object sender, MouseButtonEventArgs args)
+        private void mouseDownWhenSelectingColor(object sender, MouseButtonEventArgs args)
         {
-            this.CaptureMouse();
-            var position = PointToScreen(Mouse.GetPosition(this));
-            var c = getColor(position.X,position.Y);
-            var colorItem = new ColorItem();
-            colorItem.Argb = c;
-            spColor.Children.Insert(0, colorItem);
+            if (args.ChangedButton == MouseButton.Left)
+            {
+                var position = PointToScreen(Mouse.GetPosition(this));
+                var c = getColor(position.X,position.Y);
+                addColorItem(c);
+                print(DONEGETTING); 
+            }
+            else
+            {
+                print("Exit selecting mode");
+            }
             this.Focus();
-            Mouse.RemoveMouseDownHandler(this, mouseDown);
+            Mouse.RemoveMouseDownHandler(this, mouseDownWhenSelectingColor);
+            this.Deactivated -= holdWindowFocus;
             this.ReleaseMouseCapture();
-            print(DONEGETTING);
+            OutBorder.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
         }
 
-        private void Window_Deactivated(object sender, EventArgs e)
+        private void addColorItem(Color c)
+        {
+            var colorItem = new ColorItem(this);
+            colorItem.Argb = c;
+            spColor.Children.Insert(0, colorItem);
+            System.Windows.Media.Animation.Storyboard.SetTarget(enterAnimation, colorItem);
+            enterSB.Begin(this);
+        }
+
+        private void holdWindowFocus(object sender, EventArgs e)
         {
             Window window = (Window)sender;
             window.Activate();
@@ -85,10 +126,11 @@ namespace ColorSnail
             tbStatus.Text = s;
         }
 
-        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        private void btnSelectColor_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Mouse.AddMouseDownHandler(this, mouseDown);
+            Mouse.AddMouseDownHandler(this, mouseDownWhenSelectingColor);
             this.CaptureMouse();
+            OutBorder.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFAA3333"));
             print(GETCOLOR);
         }
 
@@ -111,9 +153,131 @@ namespace ColorSnail
             }
         }
 
-        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void initAnimations()
         {
-            
+            enterSB.Children.Add(enterAnimation);
+            removeSB.Children.Add(removeAnimation);
+            System.Windows.Media.Animation.Storyboard.SetTargetProperty(removeAnimation, new PropertyPath(ColorItem.HeightProperty));
+            System.Windows.Media.Animation.Storyboard.SetTargetProperty(enterAnimation, new PropertyPath(ColorItem.HeightProperty));
+
+        }
+
+
+        async internal void removeItem(ColorItem colorItem)
+        {
+            System.Windows.Media.Animation.Storyboard.SetTarget(removeAnimation, colorItem);
+            removeSB.Begin(this);
+            await Task.Delay(MSECANIME);
+            spColor.Children.Remove(colorItem);
+        }
+
+        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            wrapPanelAroundCloseButton.Background = Brushes.DarkGray;
+        }
+
+        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            wrapPanelAroundCloseButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF333337"));
+        }
+
+        internal static void logError(string str)
+        {
+            //TODO
+        }
+
+        internal void prompt(string str)
+        {
+            tbStatus.Text = str;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() == true)
+            {
+                saveFile(sfd.FileName);
+            }
+        }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            clearColors();
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == true)
+            {
+                loadFile(ofd.FileName);
+            }
+        }
+
+        private void clearColors()
+        {
+            if (spColor.Children.Count != 0)
+            {
+                bool save = (System.Windows.MessageBox.Show("Do you want to save the current work?", "aler", MessageBoxButton.YesNo) == MessageBoxResult.Yes);
+                if (save)
+                {
+                    btnSave_Click(null, null);
+                }
+            }
+        }
+
+        private void loadFile(string filename)
+        {
+            System.IO.Stream stream ;
+            try
+            {
+                stream = new System.IO.FileStream(filename, System.IO.FileMode.Open);
+            }
+            catch (Exception)
+            {
+                prompt("Error reading the file");
+                return;
+            }
+
+            var colors = ColorParser.parseStream(stream);
+            stream.Close();
+
+            if (colors.Count != 0)
+            {
+                foreach (var c in colors)
+                {
+                    addColorItem(c);
+                }
+            } 
+            else
+            {
+                prompt("No valid color stored in file");
+            }
+        }
+
+        private void saveFile(string filename)
+        {
+            var colorItems = new ColorItem[spColor.Children.Count];
+            if (colorItems.Length == 0)
+            {
+                prompt("Error! No Color to be saved");
+                return;
+            }
+
+            int i = 0;
+            foreach (var child in spColor.Children)
+            {
+                var ci = (ColorItem)(child);
+                colorItems[i] = ci;
+                i++;
+            }
+
+            string[] document = ColorParser.generateDocument(colorItems);
+
+            var writer = new System.IO.StreamWriter(filename);
+            foreach (var s in document)
+            {
+                writer.WriteLine(s);
+            }
+            writer.Flush();
+            writer.Close();
         }
     }
 }
