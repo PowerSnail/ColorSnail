@@ -25,7 +25,7 @@ Double click on the top bar, and you will be able to see the About and Credit in
 
 ## Latest Version
 
-alpha v0.2 [goto Release Notes](#Release Notes)
+alpha v0.2 [goto Release Notes](#Releases)
 
 ## TODOs
 
@@ -35,9 +35,8 @@ alpha v0.2 [goto Release Notes](#Release Notes)
 - Add tutorial animation
 - Perfecting the ReadMe.md file: a). add icons to places needed; b). add screenshots of the program
 
-## Release Notes
+## Releases
 
-<<<<<<< HEAD
 ### 2015 Dec. 21: alpha v0.2
 New Features:
 
@@ -53,9 +52,7 @@ bug fixed:
 
 1. window no longer acquire focus every time its deactivated. Main window and About window both apply topmost property; Main window will acquire focus when user is selecting pixel from the screen.
 
-### 2015 Dec. 12: alpha v0.1 
-=======
-### 2015 Dec. 12: alpha v0.1  <a name="alpha0.1"></a>
+### 2015 Dec. 12: alpha v0.1
 ---
 >>>>>>> origin/master
 1. Get Color from any pixel on the screen
