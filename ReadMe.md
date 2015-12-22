@@ -35,7 +35,7 @@ alpha v0.2 [goto Release Notes](#Releases)
 - Add tutorial animation
 - Perfecting the ReadMe.md file: a). add icons to places needed; b). add screenshots of the program
 
-## Releases
+## Releases <a name="Releases"></a>
 
 ### 2015 Dec. 21: alpha v0.2
 New Features:
