@@ -13,7 +13,7 @@ To download the executable only (the .exe you run), open the folder "Release [ve
 
 To grab a color from anywhere on the screen, click the "Color Straw" button. You will see the text beside it instantly changes. Click anywhere you want on the screen, and the program will read the color at the pixel your mouse is resting. The color will be automatically added to the main list.
 
-[image](powersnail.github.io/images/add_color.gif)
+[image](http://powersnail.github.io/images/add_color.gif)
 
 ### 2. Use Color
 
