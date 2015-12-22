@@ -37,6 +37,7 @@ alpha v0.2 [goto Release Notes](#Release Notes)
 
 ## Release Notes
 
+<<<<<<< HEAD
 ### 2015 Dec. 21: alpha v0.2
 New Features:
 
@@ -53,6 +54,10 @@ bug fixed:
 1. window no longer acquire focus every time its deactivated. Main window and About window both apply topmost property; Main window will acquire focus when user is selecting pixel from the screen.
 
 ### 2015 Dec. 12: alpha v0.1 
+=======
+### 2015 Dec. 12: alpha v0.1  <a name="alpha0.1"></a>
+---
+>>>>>>> origin/master
 1. Get Color from any pixel on the screen
 2. Keep main window active while getting the color
 3. List colors, with a square demonstrating its color, a textBlock writing its color code and a 'x' button to close the color item
